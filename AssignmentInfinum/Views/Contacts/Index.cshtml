@@ -45,6 +45,7 @@
                 <a class="Cancel" href="javascript:;" style="display:none">Cancel</a>
                 <input type="button" value="Delete"
                        onClick="deleteRow(@item.name,@item.birthdate,@item.address)">
+                <a href="/Contacts/Test" class="Button">Text</a>
             </td>
         </tr>
     }
@@ -122,13 +123,13 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 
       $.ajax({
       type: "POST",
-      url: "http://localhost:44325/Contacts/InsertContact",
+      url: "http://localhost:61522/Contacts/InsertContact",
       data: formToJSON(txtName.val(),txtBirthDate.val(),txtAddress.val()),
       contentType: "application/json", /*; charset=utf-8*/
       dataType: "json",
       success: function (r) {
           console.log("succesfully ran add");
-
+          console.log(r)
       }
       });
     });
@@ -151,7 +152,7 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
         function deleteRow(name, datebirth, address) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/Contacts/DeleteContact",
+                url: "http://localhost:61522/Contacts/DeleteContact",
                 data: formToJSON(name, datebirth, address),
                 contentType: "application/json", /*; charset=utf-8*/
                 dataType: "json",

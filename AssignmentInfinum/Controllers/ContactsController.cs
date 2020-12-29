@@ -14,9 +14,6 @@ namespace AssignmentInfinum.Controllers
         // GET: Contacts
         public ActionResult Index(int? page)
         {
-            contacts c = ContactsDatabase.Instance.GetPhoneNumbersForContact(
-                new contacts() { address = "asd", name = "asd" });
-
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
@@ -46,11 +43,13 @@ namespace AssignmentInfinum.Controllers
             return new EmptyResult();
         }
 
-        [Route("Test")]
-        [HttpPost]
-        public ActionResult Test(contacts contacts)
+        //[Route("ViewContact")]
+        [Route("ViewContact")]
+        //[HttpGet]
+        public ActionResult ViewContact()
         {
-            return new System.Web.Mvc.JsonResult() { Data = "tralala" };
+            //string[] c_info = id.Split('+');
+            return RedirectToAction("Contact", "Contacts", ContactsDatabase.Instance.GetContact("asd", "asd"/*c_info[0], c_info[1])*/));
         }
     }
 }

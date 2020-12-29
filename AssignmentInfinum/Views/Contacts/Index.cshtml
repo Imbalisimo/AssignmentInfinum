@@ -6,10 +6,6 @@
 }
 
 <h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table id="tblContacts" class="table">
     <tr>
         <th>
@@ -45,7 +41,7 @@
                 <a class="Cancel" href="javascript:;" style="display:none">Cancel</a>
                 <input type="button" value="Delete"
                        onClick="deleteRow(@item.name,@item.birthdate,@item.address)">
-                <a href="/Contacts/Test" class="Button">Text</a>
+                <a class="View contact" href="http://localhost:61522/Contacts/ViewContact">View contact</a>
             </td>
         </tr>
     }
@@ -95,9 +91,7 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
             chat.client.sendNewContact = function (name, birth, address) {
                 // Add the message to the page.
 
-                //TO-DO: APPEND ROW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                $('#discussion').append('<li><strong>' + htmlEncode(name)
-                    + '</strong>: ' + htmlEncode(message) + '</li>');
+                $('#tblContacts').append(rowToHtml(name, birth, address));
             };
             // Start the connection.
             $.connection.hub.start().done(function () {

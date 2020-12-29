@@ -41,6 +41,24 @@ namespace AssignmentInfinum
             return contactsList;
         }
 
+        public contacts GetContact(string name, string address)
+        {
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM CONTACTS WHERE name = '" + name + "' AND address = '" + address + "'";
+
+            contacts contact = new contacts();
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    contact.name = reader.GetValue(0).ToString();
+                    contact.birthdate = DateTime.Parse(reader.GetValue(1).ToString());
+                    contact.address = reader.GetValue(2).ToString();
+                }
+            }
+            return contact;
+        }
+
         public int InsertNewContact(contacts contact)
         {
             var command = connection.CreateCommand();

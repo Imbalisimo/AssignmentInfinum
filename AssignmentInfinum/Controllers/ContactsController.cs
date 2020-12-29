@@ -28,28 +28,11 @@ namespace AssignmentInfinum.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateContact(contacts contactOld, contacts contactNew)
-        {
-            ContactsDatabase.Instance.UpdateContact(contactOld, contactNew);
-
-            return new EmptyResult();
-        }
-
-        [HttpPost]
         public ActionResult DeleteContact(contacts contact)
         {
             ContactsDatabase.Instance.DeleteContact(contact);
 
             return new EmptyResult();
-        }
-
-        //[Route("ViewContact")]
-        [Route("ViewContact")]
-        //[HttpGet]
-        public ActionResult ViewContact()
-        {
-            //string[] c_info = id.Split('+');
-            return RedirectToAction("Contact", "Contacts", ContactsDatabase.Instance.GetContact("asd", "asd"/*c_info[0], c_info[1])*/));
         }
     }
 }

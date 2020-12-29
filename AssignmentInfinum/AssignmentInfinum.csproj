@@ -157,6 +157,7 @@
     <Compile Include="ContactsDatabase.cs" />
     <Compile Include="ContactsHub.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\ContactViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -239,7 +240,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
-    <Content Include="Views\Contacts\Contact.cshtml" />
+    <Content Include="Views\ContactView\ViewSingleContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

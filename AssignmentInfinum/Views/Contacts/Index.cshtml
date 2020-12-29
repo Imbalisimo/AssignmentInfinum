@@ -25,23 +25,17 @@
         <tr>
             <td class="Name">
                 <span>@item.name</span>
-                <input type="text" value="@item.name" style="display:none" />
             </td>
             <td class="BirthDate">
                 <span>@item.birthdate</span>
-                <input type="text" value="@item.birthdate" style="display:none" />
             </td>
             <td class="Address">
                 <span>@item.address</span>
-                <input type="text" value="@item.address" style="display:none" />
             </td>
             <td>
-                <a class="Edit" href="javascript:;">Edit</a>
-                <a class="Update" href="javascript:;" style="display:none">Update</a>
-                <a class="Cancel" href="javascript:;" style="display:none">Cancel</a>
                 <input type="button" value="Delete"
-                       onClick="deleteRow(@item.name,@item.birthdate,@item.address)">
-                <a class="View contact" href="http://localhost:61522/Contacts/ViewContact">View contact</a>
+                       onClick="deleteRow('@item.name','@item.birthdate','@item.address')">
+                <a class="View contact" href="http://localhost:61522/ContactView/ViewSingleContact/@item.name/@item.address">View contact</a>
             </td>
         </tr>
     }
@@ -174,6 +168,22 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
                 + "/>"
 
                 + "</td>";
+        }
+
+        function ViewContact(name, datebirth, address) {
+            console.log("succesfully ran View");
+            console.log(name + "  " + datebirth + "  " + address);
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:61522/Contacts/ViewSingleContact",
+                data: formToJSON(name, datebirth, address),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (r) {
+                    console.log("succesfully ran View");
+                    console.log(r);
+                }
+            });
         }
     </script>
 }

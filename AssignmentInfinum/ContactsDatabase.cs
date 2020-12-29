@@ -119,7 +119,7 @@ namespace AssignmentInfinum
                     phonenumbers phonenumber = new phonenumbers();
                     phonenumber.number = reader.GetValue(0).ToString();
                     phonenumber.name = reader.GetValue(1).ToString();
-                    phonenumber.contacts = contact;
+                    //phonenumber.contacts = contact;
                     contact.phonenumbers.Add(phonenumber);
                 }
             }

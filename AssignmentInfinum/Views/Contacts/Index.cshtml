@@ -84,14 +84,15 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
             // Create a function that the hub can call back to display messages.
             chat.client.sendNewContact = function (name, birth, address) {
                 // Add the message to the page.
-
+                console.log("arrived");
                 $('#tblContacts').append(rowToHtml(name, birth, address));
             };
             // Start the connection.
             $.connection.hub.start().done(function () {
-                $('#sendmessage').click(function () {
+                $('#btnAdd').click(function () {
+                    console.log("sending");
                     // Call the Send method on the hub.
-                    chat.server.send($('#txtName').val(), $('#txtBirthDate').val(), ('#txtAddress').val());
+                    chat.server.send($('#txtName').val(), $('#txtBirthDate').val(), $('#txtAddress').val());
                 });
             });
         });
